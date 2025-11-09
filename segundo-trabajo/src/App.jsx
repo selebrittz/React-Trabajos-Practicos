@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Login } from "./components/Login.jsx";
 import { Register } from "./components/Register.jsx";
 
@@ -12,10 +12,6 @@ export const App = () => {
   const handleLogout = () => {
     setUser("");
   };
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <>

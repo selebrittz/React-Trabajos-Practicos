@@ -2,7 +2,7 @@ import { useForm } from "../hooks/useForm";
 import "../styles/Login.css";
 
 export const Login = ({ onLogin }) => {
-  const { formState, email, password, handleChange, handleReset } = useForm({
+  const { formState, username, password, handleChange, handleReset } = useForm({
     email: "",
     password: "",
   });
@@ -10,7 +10,7 @@ export const Login = ({ onLogin }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(formState);
-    onLogin(email);
+    onLogin(username);
     handleReset();
   };
 
@@ -18,10 +18,10 @@ export const Login = ({ onLogin }) => {
     <form onSubmit={handleSubmit}>
       <h2 className="mb-5 text-primary">Login</h2>
       <input
-        type="email"
-        name="email"
-        placeholder="email"
-        value={email}
+        type="text"
+        name="username"
+        placeholder="username"
+        value={username}
         required
         onChange={handleChange}
       />
