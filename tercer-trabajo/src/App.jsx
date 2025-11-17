@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useCounter } from "./hooks/useCounter";
+import { useFetch } from "./hooks/useFetch";
+import { Loading } from "./components/Loading";
+import { CharacterInfo } from "./components/CharacterInfo";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+export const App = () => {
+  const { counter, handleIncrement, handleDecrement } = useCounter(1);
+  const url = `https://thesimpsonsapi.com/api/characters/${counter}`;
+  const { data, isLoading, error } = useFetch(url);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <h1>Personajes de Los Simpsons</h1>
+      <hr />
 
-export default App
+      {isLoading ? (
+        <Loading />
+      ) : error ? (
+        <p className="error-message">Error: {error}</p>
+      ) : data ? (
+        <CharacterInfo data={data} />
+      ) : null}
+
+      <div className="navigation-buttons">
+        <button
+          onClick={() => handleDecrement(1)} //le digo a la funcion que vaya de menos 1 en menos 1
+          disabled={isLoading || counter === 1} //deshabilito el decremento si es que está cargando o si está en 1
+        >
+          Anterior
+        </button>
+
+        <button
+          onClick={() => handleIncrement(1)} //le digo a la funcion que vaya de mas uno en mas uno (cada que que el user hace click )
+          disabled={isLoading} // Deshabilitado solo si está cargando
+        >
+          Siguiente
+        </button>
+      </div>
+    </>
+  );
+};
+
+export default App;

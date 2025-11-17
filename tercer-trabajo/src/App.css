@@ -1,42 +1,125 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* --- Estilos Generales "Simpsons Yellow" --- */
+body {
+  background-color: #ffeb3b; /* Amarillo Simpsons */
+  font-family: "Segoe UI", "Arial", sans-serif;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   text-align: center;
+  padding: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  color: #1976d2; /* Azul Simpsons */
+  font-weight: 800;
+  text-shadow: 2px 2px 0px #fff176; /* Sombra amarilla clara */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+hr {
+  border: 0;
+  border-top: 3px dashed #fbc02d; /* Amarillo más oscuro */
+  margin: 25px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* --- Botones --- */
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
 }
 
+button {
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #1976d2; /* Azul Simpsons */
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(25, 118, 210, 0.3);
+}
+
+button:hover {
+  background-color: #0d47a1;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(13, 71, 161, 0.4);
+}
+
+button:disabled {
+  background-color: #bbdefb;
+  color: #90caf9;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- Tarjeta de Personaje --- */
 .card {
-  padding: 2em;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(25, 118, 210, 0.25);
+  max-width: 380px;
+  margin: 20px auto;
+  transition: all 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.card:hover {
+  transform: scale(1.03);
+}
+
+.character-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 15px;
+  border: 5px solid #ffeb3b;
+  margin-bottom: 20px;
+}
+
+.character-name {
+  color: #1976d2;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.character-description,
+.character-status {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.character-status {
+  font-weight: bold;
+  color: #f57f17;
+  margin-top: 15px;
+}
+
+/* --- Loading --- */
+.loading-message {
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(25, 118, 210, 0.25);
+}
+
+.loading-message p {
+  color: #1976d2;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+/* --- Error --- */
+.error-message {
+  padding: 20px;
+  background-color: #fff3e0;
+  border: 2px solid #e65100;
+  color: #bf360c;
+  font-weight: bold;
+  border-radius: 20px;
 }
